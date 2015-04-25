@@ -41,6 +41,6 @@ for(i in 1:length(p.hats)) {
     survival[i] <- 0
   }
 }
-kaggle.sub <- cbind(PassengerId,survival)
-colnames(kaggle.sub) <- c("PassengerId", "Survived")
-write.csv(kaggle.sub, file = "kaggle.csv", row.names = FALSE)
+Prediction <- predict(fit, test, type = "class")
+submit <- data.frame(PassengerId = test$PassengerId, Survived = Prediction)
+write.csv(submit, file = "myfirstdtree.csv", row.names = FALSE)
