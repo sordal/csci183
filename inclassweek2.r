@@ -41,6 +41,6 @@ for(i in 1:length(p.hats)) {
     survival[i] <- 0
   }
 }
-Prediction <- predict(fit, test, type = "class")
+Prediction <- predict(gbmFit2, test, type = "prob")
 submit <- data.frame(PassengerId = test$PassengerId, Survived = Prediction)
 write.csv(submit, file = "myfirstdtree.csv", row.names = FALSE)
