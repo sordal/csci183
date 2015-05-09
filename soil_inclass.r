@@ -1,0 +1,11 @@
+summary(soil)
+b <- data.matrix(soil)
+comps <- prcomp(soil, retx=TRUE, scale=TRUE)
+a <- data.frame(comps$x)
+pH <-glmnet(x = b, y = a$PC1,family=c("gaussian"))
+plot(pH)
+cpH <- cv.glmnet(x = b, y = a$PC1)
+plot(cpH)
+summary(cpH)
+cpH$lambda.min
+plot(coef(cv_pH))
